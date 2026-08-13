@@ -47,10 +47,15 @@
     font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
     padding: 14px 26px; border: 1px solid var(--navy-faint);
   }
-  .proof-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: 60px; }
-  .proof-card { border: 1px solid var(--navy-faint); padding: 20px; background: var(--grey); }
-  .proof-card .t { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
-  .proof-card .d { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--navy-soft); }
+  .proof-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; padding-bottom: 60px; }
+  .proof-card { border: 1px solid var(--navy-faint); overflow: hidden; position: relative; height: 220px; display: block; }
+  .proof-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .proof-card .t {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: rgba(16,41,55,0.82); color: var(--cream);
+    font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 8px 10px;
+  }
 
   /* ---------- SECTIONS ---------- */
   section { padding: 70px 0; border-top: 1px solid var(--navy-faint); }
@@ -99,22 +104,26 @@
 
   /* ---------- FOOTER ---------- */
   footer { padding: 60px 0; border-top: 1px solid var(--navy-faint); }
-  .contact-row { display: flex; gap: 30px; flex-wrap: wrap; font-family: 'Inter', sans-serif; font-size: 0.78rem; }
   .contact-row a { border-bottom: 1px solid var(--navy-faint); padding-bottom: 2px; }
   .fine-print { margin-top: 40px; font-family: 'Inter', sans-serif; font-size: 0.66rem; color: var(--navy-faint); letter-spacing: 0.04em; }
 
   @media (max-width: 860px) {
-    .proof-strip, .campaign-grid, .art-grid { grid-template-columns: 1fr; }
+    .proof-strip { grid-template-columns: repeat(2, 1fr); }
+    .campaign-grid, .art-grid { grid-template-columns: 1fr; }
     .writing-grid { grid-template-columns: 1fr; }
     .about-strip { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .proof-strip { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<a class="mark" href="index.html">Minhal</a>
+<a class="mark" href="index.html"><img src="images/signature.png" alt="Minhal signature"></a>
 <nav class="nav-desktop">
   <a class="nav-link" href="work.html">Work</a>
+  <a class="nav-link" href="art.html">Visual Art</a>
   <a class="nav-link" href="writing.html">Writing</a>
   <a class="nav-link" href="about.html">About</a>
   <a class="btn-resume" href="#">Résumé</a>
@@ -122,6 +131,7 @@
 <div class="nav-mobile-toggle" id="hamburger"><span></span></div>
 <div class="mobile-menu" id="mobileMenu">
   <a class="mobile-link" href="work.html">Work</a>
+  <a class="mobile-link" href="art.html">Visual Art</a>
   <a class="mobile-link" href="writing.html">Writing</a>
   <a class="mobile-link" href="about.html">About</a>
   <a class="btn-resume" href="#">Résumé</a>
@@ -136,9 +146,11 @@
     <a class="btn-secondary" href="#">Download Résumé</a>
   </div>
   <div class="proof-strip">
-    <div class="proof-card"><div class="t">Campaign Design</div><div class="d">Posters, event branding, guidebooks, and merch for UBC eProjects</div></div>
-    <div class="proof-card"><div class="t">Published Writing</div><div class="d">Personal essays, including a piece in the UBC Alumni Magazine</div></div>
-    <div class="proof-card"><div class="t">Visual Art</div><div class="d">Original paintings and graphite portraits</div></div>
+    <a class="proof-card" href="work.html#launch-party"><img src="images/eprojects-campaigns/launch-party-final-wide.jpg" alt="Launch Party campaign poster"><div class="t">Campaign Design</div></a>
+    <a class="proof-card" href="identity.html"><img src="images/identity-dev/final-piece-hires.jpg" alt="Identity final piece" style="object-position:center 15%;"><div class="t">Identity</div></a>
+    <a class="proof-card" href="simple-or-complex.html"><img src="images/simple-or-complex.jpeg" alt="Simple or Complex final piece"><div class="t">Simple or Complex</div></a>
+    <a class="proof-card" href="writing.html"><img src="images/extraordinary-moments-poster.jpg" alt="Extraordinary Moments — UBC Alumni Magazine"><div class="t">Published Writing</div></a>
+    <a class="proof-card" href="graphite.html"><img src="images/rearing-horse.jpg" alt="Rearing Horse graphite drawing" style="object-position:center 20%;"><div class="t">Graphite</div></a>
   </div>
 </div>
 
@@ -224,7 +236,7 @@
     <div class="art-grid">
       <a class="art-card" href="simple-or-complex.html">
         <div class="art-img"><img src="images/simple-or-complex.jpeg" alt="Simple or Complex painting"></div>
-        <div class="art-caption"><div class="t">Simple or Complex</div><div class="m">Oil on canvas</div></div>
+        <div class="art-caption"><div class="t">Simple or Complex</div><div class="m">Mixed media: acrylic, watercolour &amp; soft pastel</div></div>
       </a>
       <a class="art-card" href="graphite.html">
         <div class="art-img"><img src="images/rearing-horse.jpg" alt="Rearing Horse graphite drawing" style="object-position:center 20%;"></div>
@@ -255,8 +267,8 @@
     <h2 class="display">Let's talk about a piece, a project, or a commission.</h2>
     <div class="contact-row">
       <a href="mailto:minhal.hasnain@outlook.com">minhal.hasnain@outlook.com</a>
-      <a href="#">LinkedIn</a>
-      <a href="https://www.instagram.com/spilling.ink.mh/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/minhal-hasnain-a8464b2b0/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/spilling.ink.mh/" target="_blank" rel="noopener">Art Instagram</a>
       <a href="#">Download Résumé</a>
     </div>
     <div class="fine-print">Portfolio of Minhal — Updated 2026</div>
