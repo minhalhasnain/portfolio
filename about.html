@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Minhal</title>
+<link rel="stylesheet" href="style.css">
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS FILE
+  ============================================================
+  The big centered name uses an animated gradient — its colors
+  are the two "vivid-blue" variables near the top of style.css,
+  plus your existing navy. Change those hex values there.
+
+  The three cycling labels are in the .roles list below — add,
+  remove, or reorder <span> entries and the rotation adjusts
+  automatically. Timing is set in the <script> at the bottom
+  (currently 2.4s per label).
+
+  Bio paragraphs are plain text further down — replace directly.
+  ============================================================
+-->
+
+<style>
+  .about-hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 24px 60px;
+  }
+
+  .name-gradient {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: clamp(3.2rem, 13vw, 8.5rem);
+    line-height: 1;
+    text-transform: lowercase;
+    background: linear-gradient(115deg, var(--vivid-dark) 0%, var(--vivid-blue) 30%, var(--vivid-blue-light) 50%, var(--vivid-blue) 70%, var(--vivid-dark) 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 9s ease infinite;
+  }
+
+  @keyframes gradientFlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .roles {
+    margin-top: 26px;
+    height: 1.4rem;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy-soft);
+  }
+  .roles span {
+    position: absolute; left: 50%; top: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    white-space: nowrap;
+  }
+  .roles span.active { opacity: 1; }
+
+  .about-divider {
+    width: 40px; height: 1px; background: var(--teal);
+    margin: 44px auto 0;
+  }
+
+  .map-wrap {
+    max-width: 640px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+  }
+  .map-wrap svg { width: 100%; height: auto; display: block; }
+  .continent { fill: var(--navy); }
+  .pin-dot { fill: var(--vivid-blue-light); stroke: var(--cream); stroke-width: 1.6; }
+  .pin-pulse {
+    fill: none;
+    stroke: var(--vivid-blue-light);
+    stroke-width: 1;
+    transform-origin: center;
+    animation: pinPulse 3s ease-out infinite;
+  }
+  .pin-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    fill: var(--navy);
+  }
+  .pin-leader { stroke: var(--navy-faint); stroke-width: 1; }
+  @keyframes pinPulse {
+    0%   { r: 4; opacity: 0.55; }
+    100% { r: 17; opacity: 0; }
+  }
+  .map-caption {
+    margin-top: 22px;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--navy-soft);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pin-pulse { animation: none; opacity: 0; }
+  }
+
+  .about-bio {
+    max-width: 620px;
+    margin: 60px auto 0;
+    padding: 0 24px 120px;
+    text-align: left;
+  }
+  .about-bio p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 22px;
+  }
+  .about-bio .label { margin-bottom: 18px; display: block; }
+  .bio-statement {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    line-height: 1.4;
+    color: var(--navy);
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--navy-faint);
+  }
+  .bio-placeholder-box {
+    border: 1px dashed var(--navy-faint);
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--navy-soft);
+  }
+  .bio-placeholder-box strong { color: var(--navy); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .name-gradient { animation: none; background-position: 30% 50%; }
+    .roles span { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="mark" href="index.html">Minhal</a>
+<nav class="nav-desktop">
+  <a class="nav-link" href="work.html">Work</a>
+  <a class="nav-link" href="writing.html">Writing</a>
+  <a class="nav-link" href="about.html">About</a>
+  <a class="btn-resume" href="#">Résumé</a>
+</nav>
+<div class="nav-mobile-toggle" id="hamburger"><span></span></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a class="mobile-link" href="work.html">Work</a>
+  <a class="mobile-link" href="writing.html">Writing</a>
+  <a class="mobile-link" href="about.html">About</a>
+  <a class="btn-resume" href="#">Résumé</a>
+</div>
+
+<!-- SECTION: ABOUT HERO -->
+<div class="about-hero">
+  <div class="name-gradient">Minhal</div>
+  <div class="roles">
+    <span class="active">Creative Designer</span>
+    <span>Storyteller</span>
+    <span>Visual Artist</span>
+  </div>
+  <div class="about-divider"></div>
+
+  <div class="map-wrap">
+    <svg viewBox="0 0 1000 500" role="img" aria-labelledby="mapTitle mapDesc">
+      <title id="mapTitle">A world map</title>
+      <desc id="mapDesc">Three pins mark Vancouver Canada, Karachi Pakistan, and Dubai UAE.</desc>
+
+      <path class="continent" d="M41.7,69.4 L97.2,55.6 L152.8,55.6 L208.3,50 L291.7,22.2 L305.6,66.7 L236.1,83.3 L263.9,97.2 L319.4,97.2 L352.8,116.7 L325,125 L311.1,127.8 L294.4,137.2 L288.9,152.8 L277.8,180.6 L266.7,166.7 L250,169.4 L230.6,177.8 L230.6,194.4 L255.6,191.7 L277.8,225 L266.7,222.2 L225,202.8 L194.4,186.1 L180.6,172.2 L161.1,147.2 L155.6,127.8 L158.3,113.9 L138.9,97.2 L125,88.9 L77.8,83.3 Z"/>
+      <path class="continent" d="M375,83.3 L444.4,41.7 L347.2,19.4 L305.6,41.7 Z"/>
+      <path class="continent" d="M291.7,219.4 L327.8,222.2 L338.9,230.6 L361.1,250 L402.8,263.9 L394.4,286.1 L380.6,313.9 L366.7,327.8 L344.4,344.4 L327.8,361.1 L311.1,388.9 L311.1,402.8 L297.2,394.4 L300,361.1 L305.6,319.4 L275,266.7 L277.8,250 Z"/>
+      <path class="continent" d="M475,147.2 L483.3,150 L486.1,150 L508.3,130.6 L527.8,127.8 L544.4,144.4 L550,133.3 L563.9,144.4 L580.6,136.1 L597.2,122.2 L583.3,113.9 L611.1,94.4 L569.4,88.9 L555.6,69.4 L555.6,52.8 L527.8,75 L525,97.2 L522.2,105.6 L511.1,102.8 L494.4,113.9 L488.9,116.7 L494.4,127.8 Z"/>
+      <path class="continent" d="M475,155.6 L527.8,147.2 L530.6,147.2 L555.6,161.1 L588.9,163.9 L594.4,172.2 L641.7,216.7 L613.9,255.6 L608.3,269.4 L597.2,305.6 L591.7,330.6 L550,344.4 L533.3,313.9 L536.1,275 L533.3,266.7 L525,250 L519.4,238.9 L513.9,238.9 L494.4,236.1 L486.1,236.1 L472.2,233.3 L452.8,208.3 L455.6,194.4 L461.1,177.8 Z"/>
+      <path class="continent" d="M622.2,141.7 L633.3,133.3 L644.4,119.4 L666.7,97.2 L750,47.2 L944.4,55.6 L944.4,88.9 L888.9,97.2 L852.8,144.4 L838.9,163.9 L836.1,163.9 L830.6,180.6 L816.7,188.9 L800,219.4 L791.7,225 L777.8,230.6 L786.1,244.4 L761.1,205.6 L750,188.9 L722.2,213.9 L713.9,227.8 L702.8,208.3 L686.1,183.3 L658.3,177.8 L652.8,180.6 L638.9,177.8 L622.2,213.9 L605.6,200 L600,163.9 Z"/>
+      <path class="continent" d="M816.7,311.1 L863.9,283.3 L894.4,280.6 L905.6,302.8 L925,325 L919.4,344.4 L902.8,355.6 L908.3,358.3 L880.6,347.2 L883.3,347.2 L822.2,338.9 Z"/>
+      <path class="continent" d="M488,97 L495,94 L497,101 L491,104 Z"/>
+      <path class="continent" d="M478,106 L484,103 L484,109 L479,111 Z"/>
+      <path class="continent" d="M885,138 L892,133 L896,142 L889,148 Z"/>
+      <path class="continent" d="M896,152 L901,148 L903,158 L897,160 Z"/>
+      <path class="continent" d="M628,290 L634,286 L633,312 L627,316 Z"/>
+      <path class="continent" d="M790,248 L798,245 L797,253 L789,255 Z"/>
+      <path class="continent" d="M805,258 L815,255 L814,264 L804,266 Z"/>
+      <path class="continent" d="M955,354 L962,351 L961,360 L954,362 Z"/>
+      <path class="continent" d="M958,368 L964,365 L964,374 L957,376 Z"/>
+
+      <line class="pin-leader" x1="158" y1="103" x2="158" y2="80"/>
+      <g transform="translate(158,114)">
+        <circle class="pin-pulse" r="4"/>
+        <circle class="pin-dot" r="4"/>
+      </g>
+      <text class="pin-label" x="158" y="70" text-anchor="middle">Vancouver</text>
+
+      <line class="pin-leader" x1="650" y1="172" x2="600" y2="145"/>
+      <g transform="translate(653,181)">
+        <circle class="pin-pulse" r="4" style="animation-delay:1s"/>
+        <circle class="pin-dot" r="4"/>
+      </g>
+      <text class="pin-label" x="590" y="135" text-anchor="middle">Dubai</text>
+
+      <line class="pin-leader" x1="690" y1="192" x2="725" y2="215"/>
+      <g transform="translate(686,183)">
+        <circle class="pin-pulse" r="4" style="animation-delay:2s"/>
+        <circle class="pin-dot" r="4"/>
+      </g>
+      <text class="pin-label" x="730" y="227" text-anchor="middle">Karachi</text>
+    </svg>
+    <p class="map-caption">Vancouver — Karachi — Dubai. Three cities that shaped how I see, and how I make.</p>
+  </div>
+</div>
+
+<!-- SECTION: BIO -->
+<div class="about-bio">
+  <span class="label">Journey</span>
+  <p class="bio-statement">I thrive in the space where storytelling, creative design, and visual art overlap.</p>
+  <div class="bio-placeholder-box">
+    Write your journey here — replace this box with real paragraphs. A few threads to pull on, if it helps:<br><br>
+    <strong>Background:</strong> the shape of your path through Karachi, Dubai, and Vancouver — what each place gave you.<br>
+    <strong>Storytelling:</strong> how writing became part of how you process and share things.<br>
+    <strong>Creative design:</strong> what drew you to campaign work and visual communication for the clubs you've worked with.<br>
+    <strong>Visual art:</strong> where painting and drawing fit into all of this, and what keeps you returning to it.<br>
+    <strong>The overlap:</strong> why you're drawn to working across all three rather than picking just one.
+  </div>
+</div>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dadi — Minhal</title>
+<link rel="stylesheet" href="style.css">
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS FILE
+  ============================================================
+  Replace the placeholder paragraphs inside <div class="essay-body">
+  with your real essay text. Each paragraph is just a <p> tag —
+  add or remove as needed. The portrait image is already wired
+  in from images/dadi-portrait.jpg.
+  ============================================================
+-->
+
+<style>
+  .essay-hero { padding: 130px 24px 0; text-align: center; }
+  .essay-hero .label { margin-bottom: 14px; }
+  .essay-hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; }
+  .essay-portrait-wrap { max-width: 480px; margin: 50px auto 0; padding: 0 24px; }
+  .essay-portrait-wrap img { width: 100%; display: block; border: 1px solid var(--navy-faint); }
+  .essay-portrait-caption { text-align: center; margin-top: 14px; font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy-soft); }
+  .essay-body { max-width: 640px; margin: 60px auto 0; padding: 0 24px 120px; }
+  .essay-body p { font-family: 'EB Garamond', serif; font-size: 1.18rem; line-height: 1.85; margin-bottom: 24px; }
+  .essay-placeholder { border: 1px dashed var(--navy-faint); padding: 20px; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--navy-soft); letter-spacing: 0.02em; }
+</style>
+</head>
+<body>
+
+<a class="mark" href="index.html">Minhal</a>
+<nav class="nav-desktop">
+  <a class="nav-link" href="work.html">Work</a>
+  <a class="nav-link" href="writing.html">Writing</a>
+  <a class="nav-link" href="about.html">About</a>
+  <a class="btn-resume" href="#">Résumé</a>
+</nav>
+<div class="nav-mobile-toggle" id="hamburger"><span></span></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a class="mobile-link" href="work.html">Work</a>
+  <a class="mobile-link" href="writing.html">Writing</a>
+  <a class="mobile-link" href="about.html">About</a>
+  <a class="btn-resume" href="#">Résumé</a>
+</div>
+
+<div class="essay-hero">
+  <div class="label">Personal Essay / Nonfiction — Paired with a Graphite Portrait</div>
+  <h1 class="display">Dadi</h1>
+</div>
+
+<div class="essay-portrait-wrap">
+  <img src="images/dadi-portrait.jpg" alt="Graphite portrait of Dadi">
+  <div class="essay-portrait-caption">Graphite, 2026</div>
+</div>
+
+<div class="essay-body">
+  <div class="essay-placeholder">Paste your full essay about Dadi here — replace this box with your actual paragraphs. Keep each paragraph in its own &lt;p&gt; tag for spacing to match the rest of the site.</div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2 class="display">Let's talk about a piece, a project, or a commission.</h2>
+    <div class="contact-row">
+      <a href="mailto:minhal.hasnain@outlook.com">minhal.hasnain@outlook.com</a>
+      <a href="https://www.instagram.com/spilling.ink.mh/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+    <div class="fine-print">Portfolio of Minhal — Updated 2026</div>
+  </div>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); });
+  });
+</script>
+</body>
+</html>
