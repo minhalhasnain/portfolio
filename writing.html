@@ -210,16 +210,16 @@
 </footer>
 
 <script>
-    const hamburger = document.getElementById('hamburger');
-    const substackDropdown = document.getElementById('substackDropdown');
-    const substackToggle = document.getElementById('substackToggle');
-    substackToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      substackDropdown.classList.toggle('open');
-    });
-    document.addEventListener('click', (e) => {
-      if (!substackDropdown.contains(e.target)) substackDropdown.classList.remove('open');
-    });
+  const hamburger = document.getElementById('hamburger');
+  const substackDropdown = document.getElementById('substackDropdown');
+  const substackToggle = document.getElementById('substackToggle');
+  substackToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    substackDropdown.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!substackDropdown.contains(e.target)) substackDropdown.classList.remove('open');
+  });
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
   document.querySelectorAll('.mobile-menu a').forEach(a => {
