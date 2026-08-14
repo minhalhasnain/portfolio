@@ -45,7 +45,7 @@
   .featured-essay p.blurb { font-family: 'EB Garamond', serif; font-size: 1.08rem; color: var(--navy-soft); line-height: 1.6; margin-bottom: 20px; }
   .featured-essay .read-link { font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--navy); padding-bottom: 2px; align-self: flex-start; }
 
-  .essay-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-bottom: 110px; }
+  .essay-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-bottom: 40px; }
   .essay-card { border: 1px solid var(--navy-faint); padding: 30px; display: block; transition: transform 0.25s ease, box-shadow 0.25s ease; }
   .essay-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(16,41,55,0.1); }
   .essay-card .genre { margin-bottom: 12px; }
@@ -54,22 +54,65 @@
   .essay-card .meta { margin-top: 16px; font-family: 'Inter', sans-serif; font-size: 0.68rem; letter-spacing: 0.05em; color: var(--navy-faint); }
   .essay-card.has-image { display: grid; grid-template-columns: 110px 1fr; gap: 18px; align-items: start; }
   .essay-card.has-image img { width: 110px; height: 140px; object-fit: cover; border: 1px solid var(--navy-faint); }
-  .essay-card .placeholder-thumb { width: 110px; height: 140px; border: 1px dashed var(--navy-faint); display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 0.55rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy-faint); text-align: center; padding: 8px; }
+
+  /* Substack Callout Box Below Featured/List */
+  .substack-banner {
+    border: 1px solid var(--navy-faint);
+    background: var(--cream);
+    padding: 36px 40px;
+    margin-bottom: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .substack-banner:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(16,41,55,0.1);
+  }
+  .substack-banner-content h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .substack-banner-content p {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--navy-soft);
+  }
+  .substack-banner-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid var(--navy);
+    padding: 12px 24px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--navy);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .substack-banner-btn:hover {
+    background: var(--navy);
+    color: #fff;
+  }
 
   @media (max-width: 860px) {
     .featured-essay { grid-template-columns: 1fr; }
     .featured-essay img { height: 320px; }
     .featured-essay-text { padding: 30px; }
     .essay-list { grid-template-columns: 1fr; }
+    .substack-banner { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
-<a class="mark" href="index.html"><img src="images/signature.png" alt="Minhal signature"></a>
+<a class="mark" href="index.html">Minhal</a>
 <nav class="nav-desktop">
   <a class="nav-link" href="work.html">Work</a>
-  <a class="nav-link" href="art.html">Visual Art</a>
   <a class="nav-link" href="writing.html">Writing</a>
   <a class="nav-link" href="about.html">About</a>
   <a class="btn-resume" href="#">Résumé</a>
@@ -77,7 +120,6 @@
 <div class="nav-mobile-toggle" id="hamburger"><span></span></div>
 <div class="mobile-menu" id="mobileMenu">
   <a class="mobile-link" href="work.html">Work</a>
-  <a class="mobile-link" href="art.html">Visual Art</a>
   <a class="mobile-link" href="writing.html">Writing</a>
   <a class="mobile-link" href="about.html">About</a>
   <a class="btn-resume" href="#">Résumé</a>
@@ -112,7 +154,7 @@
 
 <div class="wrap essay-list">
   <a class="essay-card has-image" href="essay-bottle-caps.html">
-    <div class= <img src="images/mustafa-portrait.jpg"></div>
+    <img src="images/mustafa-portrait.jpg" alt="Graphite portrait of Mustafa">
     <div>
       <div class="genre label">Personal Essay</div>
       <h3>A Bag of Bottle Caps</h3>
@@ -143,13 +185,25 @@
   </a>
 </div>
 
+<!-- Prominent Substack Box Below Essays -->
+<div class="wrap">
+  <div class="substack-banner">
+    <div class="substack-banner-content">
+      <div class="label" style="margin-bottom: 6px;">More Essays & Updates</div>
+      <h3>Read More on Substack</h3>
+      <p>Subscribe to follow my latest personal essays, sketches, and reflections directly in your inbox.</p>
+    </div>
+    <a class="substack-banner-btn" href="https://substack.com/@m1nh4l" target="_blank" rel="noopener">Visit Substack ↗</a>
+  </div>
+</div>
+
 <footer id="contact">
   <div class="wrap">
     <h2 class="display">Let's talk about a piece, a project, or a commission.</h2>
     <div class="contact-row">
       <a href="mailto:minhal.hasnain@outlook.com">minhal.hasnain@outlook.com</a>
-      <a href="https://www.instagram.com/spilling.ink.mh/" target="_blank" rel="noopener">Art Instagram</a>
-      <a href="https://www.linkedin.com/in/minhal-hasnain-a8464b2b0/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/spilling.ink.mh/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#">LinkedIn</a>
     </div>
     <div class="fine-print">Portfolio of Minhal — Updated 2026</div>
   </div>
