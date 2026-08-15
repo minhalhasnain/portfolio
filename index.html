@@ -22,39 +22,71 @@
 
 <style>
   /* ---------- HERO ---------- */
-  .hero { padding: 100px 0 0; }
+  .hero { padding: 116px 0 46px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
   .hero-statement {
-    font-size: clamp(2rem, 4.4vw, 3.4rem);
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
     font-weight: 700;
-    line-height: 1.15;
-    max-width: 16ch;
-    margin-bottom: 20px;
+    line-height: 1.16;
+    max-width: 15ch;
+    margin-bottom: 18px;
   }
   .hero-sub {
     font-family: 'EB Garamond', serif;
-    font-size: 1.15rem;
+    font-size: 1.02rem;
     color: var(--navy-soft);
-    max-width: 56ch;
-    margin-bottom: 30px;
+    max-width: 44ch;
+    margin-bottom: 26px;
   }
   .hero-sub strong { color: var(--navy); font-weight: 600; }
-  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 50px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn-primary {
-    font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
-    background: var(--navy); color: var(--cream); padding: 14px 26px; border: 1px solid var(--navy);
+    font-family: 'Inter', sans-serif; font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase;
+    background: var(--navy); color: var(--cream); padding: 13px 24px; border: 1px solid var(--navy);
   }
   .btn-secondary {
-    font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 14px 26px; border: 1px solid var(--navy-faint);
+    font-family: 'Inter', sans-serif; font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 13px 24px; border: 1px solid var(--navy-faint);
   }
-  .proof-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; padding-bottom: 60px; }
-  .proof-card { border: 1px solid var(--navy-faint); overflow: hidden; position: relative; height: 220px; display: block; }
-  .proof-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .proof-card .t {
+  .proof-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 40px 0 60px; }
+  .proof-card { border: 1px solid var(--navy-faint); padding: 20px; background: var(--grey); }
+  .proof-card .t { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+  .proof-card .d { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--navy-soft); }
+
+  /* ---------- GALLERY WALL (hero visual proof — sits beside hero text, in view without scrolling) ---------- */
+  .gw-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 148px);
+    gap: 14px;
+  }
+  .gw-tile {
+    position: relative; display: block; overflow: hidden;
+    border: 1px solid var(--navy-faint); background: var(--grey);
+  }
+  .gw-tile img, .gw-tile video {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+  }
+  .gw-tile:hover img, .gw-tile:hover video { transform: scale(1.035); }
+  .gw-featured { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .gw-caption {
     position: absolute; left: 0; right: 0; bottom: 0;
-    background: rgba(16,41,55,0.82); color: var(--cream);
-    font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.04em; text-transform: uppercase;
-    padding: 8px 10px;
+    padding: 12px 14px;
+    background: linear-gradient(to top, rgba(16,41,55,0.85) 0%, rgba(16,41,55,0.4) 55%, transparent 100%);
+  }
+  .gw-caption .t { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--cream); font-size: 0.82rem; line-height: 1.2; }
+  .gw-featured .gw-caption .t { font-size: 1.05rem; }
+  .gw-caption .m { font-family: 'Inter', sans-serif; font-size: 0.58rem; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(252,250,249,0.78); margin-top: 3px; }
+  .gw-featured .gw-caption .m { font-size: 0.62rem; }
+
+  @media (max-width: 1080px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .gw-grid { grid-template-rows: repeat(2, 200px); }
+  }
+  @media (max-width: 560px) {
+    .gw-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px repeat(3, 170px); }
+    .gw-featured { grid-column: 1 / 3; grid-row: 1 / 2; }
   }
 
   /* ---------- SECTIONS ---------- */
@@ -104,53 +136,98 @@
 
   /* ---------- FOOTER ---------- */
   footer { padding: 60px 0; border-top: 1px solid var(--navy-faint); }
+  .contact-row { display: flex; gap: 30px; flex-wrap: wrap; font-family: 'Inter', sans-serif; font-size: 0.78rem; }
   .contact-row a { border-bottom: 1px solid var(--navy-faint); padding-bottom: 2px; }
   .fine-print { margin-top: 40px; font-family: 'Inter', sans-serif; font-size: 0.66rem; color: var(--navy-faint); letter-spacing: 0.04em; }
 
   @media (max-width: 860px) {
-    .proof-strip { grid-template-columns: repeat(2, 1fr); }
-    .campaign-grid, .art-grid { grid-template-columns: 1fr; }
+    .proof-strip, .campaign-grid, .art-grid { grid-template-columns: 1fr; }
     .writing-grid { grid-template-columns: 1fr; }
     .about-strip { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 480px) {
-    .proof-strip { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<a class="mark" href="index.html"><img src="images/signature.png" alt="Minhal signature"></a>
+<a class="mark" href="index.html">Minhal</a>
 <nav class="nav-desktop">
   <a class="nav-link" href="work.html">Work</a>
-  <a class="nav-link" href="art.html">Visual Art</a>
   <a class="nav-link" href="writing.html">Writing</a>
+  <a class="nav-link" href="art.html">Visual Art</a>
   <a class="nav-link" href="about.html">About</a>
   <a class="btn-resume" href="#">Résumé</a>
 </nav>
 <div class="nav-mobile-toggle" id="hamburger"><span></span></div>
 <div class="mobile-menu" id="mobileMenu">
   <a class="mobile-link" href="work.html">Work</a>
-  <a class="mobile-link" href="art.html">Visual Art</a>
   <a class="mobile-link" href="writing.html">Writing</a>
+  <a class="mobile-link" href="art.html">Visual Art</a>
   <a class="mobile-link" href="about.html">About</a>
   <a class="btn-resume" href="#">Résumé</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO — text and gallery wall side by side, both in view without scrolling -->
 <div class="wrap hero">
-  <h1 class="hero-statement display">I build campaigns, stories, and art that connect.</h1>
-  <p class="hero-sub">Creative strategist and storyteller currently designing campaigns for <strong>UBC eProjects</strong>, writing personal essays published in the <strong>UBC Alumni Magazine</strong>, and making visual art across painting and graphite.</p>
-  <div class="hero-ctas">
-    <a class="btn-primary" href="work.html">View Selected Work →</a>
-    <a class="btn-secondary" href="#">Download Résumé</a>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <h1 class="hero-statement display">I build campaigns, stories, and art that connect.</h1>
+      <p class="hero-sub">Creative strategist and storyteller currently designing campaigns for <strong>UBC eProjects</strong>, writing personal essays published in the <strong>UBC Alumni Magazine</strong>, and making visual art across painting and graphite.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="work.html">View Selected Work →</a>
+        <a class="btn-secondary" href="#">Download Résumé</a>
+      </div>
+    </div>
+
+    <!-- GALLERY WALL — 5 pieces, one featured -->
+    <div class="hero-gallery">
+      <div class="gw-grid">
+        <a class="gw-tile gw-featured" href="https://magazine.alumni.ubc.ca/2026/campus/extraordinary-moments-ubc-vignettes-ill-never-forget" target="_blank" rel="noopener">
+          <video autoplay muted loop playsinline poster="images/extraordinary-moments-poster.jpg">
+            <source src="images/extraordinary-moments.mp4" type="video/mp4">
+          </video>
+          <div class="gw-caption">
+            <div class="t">Extraordinary Moments</div>
+            <div class="m">Published — UBC Alumni Magazine ↗</div>
+          </div>
+        </a>
+        <a class="gw-tile" href="work.html#accelerate">
+          <img src="images/eprojects-campaigns/accelerate-poster.jpg" alt="Accelerate campaign poster">
+          <div class="gw-caption">
+            <div class="t">Accelerate</div>
+            <div class="m">Campaign Design</div>
+          </div>
+        </a>
+        <a class="gw-tile" href="art.html">
+          <img src="images/landscapes/abstract-seascape.jpg" alt="Abstract ocean painting">
+          <div class="gw-caption">
+            <div class="t">Abstract Seascape</div>
+            <div class="m">Acrylic</div>
+          </div>
+        </a>
+        <a class="gw-tile" href="graphite.html">
+          <img src="images/rearing-horse.jpg" alt="Rearing Horse graphite drawing" style="object-position:center 20%;">
+          <div class="gw-caption">
+            <div class="t">Rearing Horse</div>
+            <div class="m">Graphite</div>
+          </div>
+        </a>
+        <a class="gw-tile" href="essay-dadi.html">
+          <img src="images/dadi-portrait.jpg" alt="Graphite portrait of Dadi" style="object-position:center 15%;">
+          <div class="gw-caption">
+            <div class="t">Dadi</div>
+            <div class="m">Graphite</div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
+</div>
+
+<div class="wrap">
   <div class="proof-strip">
-    <a class="proof-card" href="work.html#launch-party"><img src="images/eprojects-campaigns/launch-party-final-wide.jpg" alt="Launch Party campaign poster"><div class="t">Campaign Design</div></a>
-    <a class="proof-card" href="identity.html"><img src="images/identity-dev/final-piece-hires.jpg" alt="Identity final piece" style="object-position:center 15%;"><div class="t">Identity</div></a>
-    <a class="proof-card" href="simple-or-complex.html"><img src="images/simple-or-complex.jpeg" alt="Simple or Complex final piece"><div class="t">Simple or Complex</div></a>
-    <a class="proof-card" href="writing.html"><img src="images/extraordinary-moments-poster.jpg" alt="Extraordinary Moments — UBC Alumni Magazine"><div class="t">Published Writing</div></a>
-    <a class="proof-card" href="graphite.html"><img src="images/rearing-horse.jpg" alt="Rearing Horse graphite drawing" style="object-position:center 20%;"><div class="t">Graphite</div></a>
+    <div class="proof-card"><div class="t">Campaign Design</div><div class="d">Posters, event branding, guidebooks, and merch for UBC eProjects</div></div>
+    <div class="proof-card"><div class="t">Published Writing</div><div class="d">Personal essays, including a piece in the UBC Alumni Magazine</div></div>
+    <div class="proof-card"><div class="t">Visual Art</div><div class="d">Original paintings and graphite portraits</div></div>
   </div>
 </div>
 
@@ -236,7 +313,7 @@
     <div class="art-grid">
       <a class="art-card" href="simple-or-complex.html">
         <div class="art-img"><img src="images/simple-or-complex.jpeg" alt="Simple or Complex painting"></div>
-        <div class="art-caption"><div class="t">Simple or Complex</div><div class="m">Mixed media: acrylic, watercolour &amp; soft pastel</div></div>
+        <div class="art-caption"><div class="t">Simple or Complex</div><div class="m">Oil on canvas</div></div>
       </a>
       <a class="art-card" href="graphite.html">
         <div class="art-img"><img src="images/rearing-horse.jpg" alt="Rearing Horse graphite drawing" style="object-position:center 20%;"></div>
@@ -253,7 +330,7 @@
 <!-- ABOUT STRIP -->
 <section id="about-teaser">
   <div class="wrap about-strip">
-    <img src="images/simple-or-complex.jpeg" alt="">
+    <img src="images/going-to-sckl.jpg" alt="Minhal as a child, backpack on, ready for her first day of school" style="object-position:center 20%;">
     <div>
       <p>Born in Karachi, raised partly in Dubai, now based in Vancouver — three cities that shaped how I tell stories and make things.</p>
       <p>I work across strategy, writing, and visual art because I've never wanted to pick just one.</p>
@@ -267,8 +344,8 @@
     <h2 class="display">Let's talk about a piece, a project, or a commission.</h2>
     <div class="contact-row">
       <a href="mailto:minhal.hasnain@outlook.com">minhal.hasnain@outlook.com</a>
-      <a href="https://www.linkedin.com/in/minhal-hasnain-a8464b2b0/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.instagram.com/spilling.ink.mh/" target="_blank" rel="noopener">Art Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="https://www.instagram.com/spilling.ink.mh/" target="_blank" rel="noopener">Instagram</a>
       <a href="#">Download Résumé</a>
     </div>
     <div class="fine-print">Portfolio of Minhal — Updated 2026</div>
