@@ -48,24 +48,21 @@
     font-family: 'Inter', sans-serif; font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase;
     padding: 13px 24px; border: 1px solid var(--navy-faint);
   }
-  .proof-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 40px 0 60px; }
-  .proof-card { border: 1px solid var(--navy-faint); padding: 20px; background: var(--grey); }
-  .proof-card .t { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
-  .proof-card .d { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--navy-soft); }
 
   /* ---------- HERO VISUALS — text + one large image left, 2x2 grid right ---------- */
   .hero-left { display: flex; flex-direction: column; gap: 26px; }
   .hero-right {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(2, 170px);
-    gap: 18px;
+    gap: 20px;
+    align-content: start;
   }
+  .hero-right .hero-tile { aspect-ratio: 1; }
   .hero-tile {
     position: relative; display: block; overflow: hidden;
     border: 1px solid var(--navy-faint); background: var(--grey);
   }
-  .hero-left .hero-tile { flex: 1; min-height: 200px; }
+  .hero-left .hero-tile { flex: 1; min-height: 280px; }
   .hero-tile img, .hero-tile video {
     width: 100%; height: 100%; object-fit: cover; display: block;
     transition: transform 0.5s ease;
@@ -83,11 +80,7 @@
 
   @media (max-width: 1080px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .hero-left .hero-tile { min-height: 300px; }
-    .hero-right { grid-template-rows: repeat(2, 200px); }
-  }
-  @media (max-width: 560px) {
-    .hero-right { grid-template-rows: repeat(2, 170px); }
+    .hero-left .hero-tile { min-height: 320px; }
   }
 
   /* ---------- SECTIONS ---------- */
@@ -142,7 +135,7 @@
   .fine-print { margin-top: 40px; font-family: 'Inter', sans-serif; font-size: 0.66rem; color: var(--navy-faint); letter-spacing: 0.04em; }
 
   @media (max-width: 860px) {
-    .proof-strip, .campaign-grid, .art-grid { grid-template-columns: 1fr; }
+    .campaign-grid, .art-grid { grid-template-columns: 1fr; }
     .writing-grid { grid-template-columns: 1fr; }
     .about-strip { grid-template-columns: 1fr; }
   }
@@ -150,7 +143,7 @@
 </head>
 <body>
 
-<a class="mark" href="index.html">Minhal</a>
+<a class="mark" href="index.html"><img src="images/signature.png" alt="Minhal — signature"></a>
 <nav class="nav-desktop">
   <a class="nav-link" href="work.html">Work</a>
   <a class="nav-link" href="writing.html">Writing</a>
