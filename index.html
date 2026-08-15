@@ -23,7 +23,7 @@
 <style>
   /* ---------- HERO ---------- */
   .hero { padding: 116px 0 46px; }
-  .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 40px; }
   .hero-statement {
     font-size: clamp(1.7rem, 3vw, 2.7rem);
     font-weight: 700;
@@ -53,40 +53,41 @@
   .proof-card .t { font-family: 'Libre Baskerville', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
   .proof-card .d { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--navy-soft); }
 
-  /* ---------- GALLERY WALL (hero visual proof — sits beside hero text, in view without scrolling) ---------- */
-  .gw-grid {
+  /* ---------- HERO VISUALS — text + one large image left, 2x2 grid right ---------- */
+  .hero-left { display: flex; flex-direction: column; gap: 26px; }
+  .hero-right {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 148px);
-    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 170px);
+    gap: 18px;
   }
-  .gw-tile {
+  .hero-tile {
     position: relative; display: block; overflow: hidden;
     border: 1px solid var(--navy-faint); background: var(--grey);
   }
-  .gw-tile img, .gw-tile video {
+  .hero-left .hero-tile { flex: 1; min-height: 200px; }
+  .hero-tile img, .hero-tile video {
     width: 100%; height: 100%; object-fit: cover; display: block;
     transition: transform 0.5s ease;
   }
-  .gw-tile:hover img, .gw-tile:hover video { transform: scale(1.035); }
-  .gw-featured { grid-column: 1 / 3; grid-row: 1 / 3; }
-  .gw-caption {
+  .hero-tile:hover img, .hero-tile:hover video { transform: scale(1.035); }
+  .hero-tile .cap {
     position: absolute; left: 0; right: 0; bottom: 0;
     padding: 12px 14px;
     background: linear-gradient(to top, rgba(16,41,55,0.85) 0%, rgba(16,41,55,0.4) 55%, transparent 100%);
   }
-  .gw-caption .t { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--cream); font-size: 0.82rem; line-height: 1.2; }
-  .gw-featured .gw-caption .t { font-size: 1.05rem; }
-  .gw-caption .m { font-family: 'Inter', sans-serif; font-size: 0.58rem; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(252,250,249,0.78); margin-top: 3px; }
-  .gw-featured .gw-caption .m { font-size: 0.62rem; }
+  .hero-tile .cap .t { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--cream); font-size: 0.82rem; line-height: 1.2; }
+  .hero-tile .cap .m { font-family: 'Inter', sans-serif; font-size: 0.58rem; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(252,250,249,0.78); margin-top: 3px; }
+  .hero-left .hero-tile .cap .t { font-size: 1.05rem; }
+  .hero-left .hero-tile .cap .m { font-size: 0.62rem; }
 
   @media (max-width: 1080px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .gw-grid { grid-template-rows: repeat(2, 200px); }
+    .hero-left .hero-tile { min-height: 300px; }
+    .hero-right { grid-template-rows: repeat(2, 200px); }
   }
   @media (max-width: 560px) {
-    .gw-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px repeat(3, 170px); }
-    .gw-featured { grid-column: 1 / 3; grid-row: 1 / 2; }
+    .hero-right { grid-template-rows: repeat(2, 170px); }
   }
 
   /* ---------- SECTIONS ---------- */
@@ -166,59 +167,60 @@
   <a class="btn-resume" href="#">Résumé</a>
 </div>
 
-<!-- HERO — text and gallery wall side by side, both in view without scrolling -->
+<!-- HERO — text stacked above one large image on the left, 2x2 grid of 4 images on the right -->
 <div class="wrap hero">
   <div class="hero-grid">
-    <div class="hero-text">
-      <h1 class="hero-statement display">I build campaigns, stories, and art that connect.</h1>
-      <p class="hero-sub">Creative strategist and storyteller currently designing campaigns for <strong>UBC eProjects</strong>, writing personal essays published in the <strong>UBC Alumni Magazine</strong>, and making visual art across painting and graphite.</p>
-      <div class="hero-ctas">
-        <a class="btn-primary" href="work.html">View Selected Work →</a>
-        <a class="btn-secondary" href="#">Download Résumé</a>
+    <div class="hero-left">
+      <div class="hero-text">
+        <h1 class="hero-statement display">I build campaigns, stories, and art that connect.</h1>
+        <p class="hero-sub">Creative strategist and storyteller currently designing campaigns for <strong>UBC eProjects</strong>, writing personal essays published in the <strong>UBC Alumni Magazine</strong>, and making visual art across painting and graphite.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="work.html">View Selected Work →</a>
+          <a class="btn-secondary" href="#">Download Résumé</a>
+        </div>
       </div>
+
+      <a class="hero-tile" href="https://magazine.alumni.ubc.ca/2026/campus/extraordinary-moments-ubc-vignettes-ill-never-forget" target="_blank" rel="noopener">
+        <video autoplay muted loop playsinline poster="images/extraordinary-moments-poster.jpg">
+          <source src="images/extraordinary-moments.mp4" type="video/mp4">
+        </video>
+        <div class="cap">
+          <div class="t">Extraordinary Moments</div>
+          <div class="m">Published — UBC Alumni Magazine ↗</div>
+        </div>
+      </a>
     </div>
 
-    <!-- GALLERY WALL — 5 pieces, one featured -->
-    <div class="hero-gallery">
-      <div class="gw-grid">
-        <a class="gw-tile gw-featured" href="https://magazine.alumni.ubc.ca/2026/campus/extraordinary-moments-ubc-vignettes-ill-never-forget" target="_blank" rel="noopener">
-          <video autoplay muted loop playsinline poster="images/extraordinary-moments-poster.jpg">
-            <source src="images/extraordinary-moments.mp4" type="video/mp4">
-          </video>
-          <div class="gw-caption">
-            <div class="t">Extraordinary Moments</div>
-            <div class="m">Published — UBC Alumni Magazine ↗</div>
-          </div>
-        </a>
-        <a class="gw-tile" href="work.html#accelerate">
-          <img src="images/eprojects-campaigns/accelerate-poster.jpg" alt="Accelerate campaign poster">
-          <div class="gw-caption">
-            <div class="t">Accelerate</div>
-            <div class="m">Campaign Design</div>
-          </div>
-        </a>
-        <a class="gw-tile" href="art.html">
-          <img src="images/landscapes/abstract-seascape.jpg" alt="Abstract ocean painting">
-          <div class="gw-caption">
-            <div class="t">Abstract Seascape</div>
-            <div class="m">Acrylic</div>
-          </div>
-        </a>
-        <a class="gw-tile" href="graphite.html">
-          <img src="images/rearing-horse.jpg" alt="Rearing Horse graphite drawing" style="object-position:center 20%;">
-          <div class="gw-caption">
-            <div class="t">Rearing Horse</div>
-            <div class="m">Graphite</div>
-          </div>
-        </a>
-        <a class="gw-tile" href="essay-dadi.html">
-          <img src="images/dadi-portrait.jpg" alt="Graphite portrait of Dadi" style="object-position:center 15%;">
-          <div class="gw-caption">
-            <div class="t">Dadi</div>
-            <div class="m">Graphite</div>
-          </div>
-        </a>
-      </div>
+    <!-- 2x2 grid of 4 pieces -->
+    <div class="hero-right">
+      <a class="hero-tile" href="work.html#accelerate">
+        <img src="images/eprojects-campaigns/accelerate-poster.jpg" alt="Accelerate campaign poster">
+        <div class="cap">
+          <div class="t">Accelerate</div>
+          <div class="m">Campaign Design</div>
+        </div>
+      </a>
+      <a class="hero-tile" href="art.html">
+        <img src="images/landscapes/abstract-seascape.jpg" alt="Abstract ocean painting">
+        <div class="cap">
+          <div class="t">Abstract Seascape</div>
+          <div class="m">Acrylic</div>
+        </div>
+      </a>
+      <a class="hero-tile" href="graphite.html">
+        <img src="images/rearing-horse.jpg" alt="Rearing Horse graphite drawing" style="object-position:center 20%;">
+        <div class="cap">
+          <div class="t">Rearing Horse</div>
+          <div class="m">Graphite</div>
+        </div>
+      </a>
+      <a class="hero-tile" href="essay-dadi.html">
+        <img src="images/dadi-portrait.jpg" alt="Graphite portrait of Dadi" style="object-position:center 15%;">
+        <div class="cap">
+          <div class="t">Dadi</div>
+          <div class="m">Graphite</div>
+        </div>
+      </a>
     </div>
   </div>
 </div>
