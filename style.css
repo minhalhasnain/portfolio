@@ -139,3 +139,9 @@ section { padding: 100px 0; border-top: 1px solid var(--navy-faint); }
 .fill-b { background: linear-gradient(160deg, var(--navy), var(--teal)); }
 .fill-c { background: linear-gradient(200deg, var(--grey), var(--teal)); }
 .fill-d { background: linear-gradient(120deg, var(--cream), var(--navy) 140%); }
+
+/* ---------- FOOTER (shared across every page) ---------- */
+footer { padding: 60px 0; border-top: 1px solid var(--navy-faint); }
+.contact-row { display: flex; gap: 30px; flex-wrap: wrap; font-family: 'Inter', sans-serif; font-size: 0.78rem; }
+.contact-row a { border-bottom: 1px solid var(--navy-faint); padding-bottom: 2px; }
+.fine-print { margin-top: 40px; font-family: 'Inter', sans-serif; font-size: 0.66rem; color: var(--navy-faint); letter-spacing: 0.04em; }
